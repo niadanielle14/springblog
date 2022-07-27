@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Search a city</h1>
+<form th:action="@{/city}" th:method="POST">
+    <label for="query">Search</label>
+    <input type="text" name="query" id="query" placeholder="Enter search term">
+    <button>Search</button>
+</form>
+
+</body>
+</html>
