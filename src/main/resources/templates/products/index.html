@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>All Products</title>
 </head>
 <body>
+
+<h1>Here are All the Products</h1>
+<ul>
+    <li th:if="${product.priceInCents < 1000}" th:each="product : ${products}">
+        <p th:text="${product.name} + ' costs ' + ${product.priceInCents} + ' cents.'"></p>
+    </li>
+</ul>
+
+
 
 </body>
 </html>
