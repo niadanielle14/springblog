@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
+//private final EmailService emailService;
+
 @Controller
 public class PostController {
     @RequestMapping(path = "/posts", method = RequestMethod.GET)
@@ -17,7 +20,7 @@ public class PostController {
     @RequestMapping(path = "/posts/{id}", method = RequestMethod.GET)
     @ResponseBody
     public String postsId(@PathVariable int id) {
-        return id + "view an individual post";
+        return id + "View an individual post";
     }
     @RequestMapping(path = "/posts/create", method = RequestMethod.GET)
     @ResponseBody
@@ -29,10 +32,5 @@ public class PostController {
     public String newPost() {
         return "create a new post";
     }
-
-
-
-
-
 
 }
