@@ -1,16 +1,21 @@
 package com.example.codeup.springblog.controller;
 
+import com.example.codeup.springblog.model.Post;
+import com.example.codeup.springblog.repositories.PostRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 
 //private final EmailService emailService;
 
 @Controller
 public class PostController {
+
+    private final PostRepository postDao;
+
+    public PostController(PostRepository postDao) {
+        this.postDao = postDao;
+    }
     @RequestMapping(path = "/posts", method = RequestMethod.GET)
     @ResponseBody
     public String posts() {
@@ -22,15 +27,15 @@ public class PostController {
     public String postsId(@PathVariable int id) {
         return id + "View an individual post";
     }
-    @RequestMapping(path = "/posts/create", method = RequestMethod.GET)
-    @ResponseBody
+    @GetMapping("/posts/create")
     public String postsCreate() {
-        return "view the form for creating a post";
+        return "posts/create";
     }
-    @RequestMapping(path = "/posts/create", method = RequestMethod.POST)
-    @ResponseBody
-    public String newPost() {
-        return "create a new post";
+    @PostMapping("/posts/create")
+    public String savePost(@RequestParam String title, @RequestParam String body) {
+        Post post = new Post(title, body);
+        // save the post to the database with JPA
+        postDao.save(post);
+        return "redirect:/posts";
     }
-
 }

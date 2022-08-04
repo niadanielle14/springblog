@@ -9,7 +9,7 @@ public class Post {
     private long id;
     @Column(nullable = false)
     private String title;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String body;
 
     public Post(long id, String title, String body) {
