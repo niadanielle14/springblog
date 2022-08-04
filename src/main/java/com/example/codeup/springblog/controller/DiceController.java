@@ -14,13 +14,13 @@ public class DiceController {
         return "roll-dice";
     }
 
-    @PostMapping("/roll-dice/{guess}")
+    @GetMapping("/roll-dice/{guess}")
     public String diceRollResults(@PathVariable int guess, Model vModel) {
         Random rn = new Random();
         int roll = rn.nextInt(6) + 1;
         vModel.addAttribute("roll", roll);
         vModel.addAttribute("guess", guess);
-        return "roll-results";
+        return "class-exercises/roll-results";
     }
 }
 
