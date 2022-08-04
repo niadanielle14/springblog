@@ -1,8 +1,15 @@
 package com.example.codeup.springblog.model;
 
+import javax.persistence.*;
+
+@Entity
 public class Post {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(nullable = false)
     private String title;
+    @Column(nullable = false)
     private String body;
 
     public Post(long id, String title, String body) {
