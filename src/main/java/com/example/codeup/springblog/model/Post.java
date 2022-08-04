@@ -18,6 +18,10 @@ public class Post {
         this.body = body;
     }
 
+    public Post() {
+
+    }
+
     public long getId() {
         return id;
     }

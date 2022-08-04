@@ -33,7 +33,9 @@ public class PostController {
     }
     @PostMapping("/posts/create")
     public String savePost(@RequestParam String title, @RequestParam String body) {
-        Post post = new Post(title, body);
+        Post post = new Post();
+        post.setTitle(title);
+        post.setBody(body);
         // save the post to the database with JPA
         postDao.save(post);
         return "redirect:/posts";
