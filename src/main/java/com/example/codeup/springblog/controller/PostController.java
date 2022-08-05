@@ -1,7 +1,9 @@
 package com.example.codeup.springblog.controller;
 
 import com.example.codeup.springblog.model.Post;
+import com.example.codeup.springblog.model.User;
 import com.example.codeup.springblog.repositories.PostRepository;
+import com.example.codeup.springblog.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,10 +19,11 @@ import java.util.List;
 public class PostController {
 
     private final PostRepository postDao;
-
-    public PostController(PostRepository postDao) {
+    private final UserRepository userDao;
+    public PostController(PostRepository postDao, UserRepository userDao) {
 
         this.postDao = postDao;
+        this.userDao = userDao;
     }
 //    @GetMapping("/posts")
 //    @ResponseBody
@@ -40,10 +43,12 @@ public class PostController {
     }
     @PostMapping("/posts/create")
     public String savePost(@RequestParam String title, @RequestParam String body) {
+        User user = userDao.getReferenceById(1L);
         Post post = new Post();
         post.setTitle(title);
         post.setBody(body);
-        // save the post to the database with JPA
+        post.setUser(user);
+        // saves the user and post to the database with JPA
         postDao.save(post);
         return "redirect:/posts/all";
     }
