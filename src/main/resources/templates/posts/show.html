@@ -6,6 +6,6 @@
 <nav th:replace="partials/partials.html :: nav"></nav>
 <h1 th:text="${post.title}"></h1>
 <p th:text="${post.body}"></p>
-
+<p>The author of the post is: <span th:text="${post.user.email}"></span></p>
 </body>
 </html>

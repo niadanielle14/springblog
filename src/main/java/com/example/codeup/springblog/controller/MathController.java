@@ -17,7 +17,6 @@ public class MathController {
     @ResponseBody
     public int add(@PathVariable int num1, @PathVariable int num2) {
         return num1 + num2;
-
     }
 
 }

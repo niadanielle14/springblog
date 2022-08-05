@@ -2,7 +2,7 @@
     <meta charset="UTF-8">
     <title th:text="${'My Blog | ' + title}"></title>
 </head>
-
+<header th:fragment="header(title)"><h2 th:text="${title}"></h2></header>
 <nav th:fragment="nav">
     <a href="/home">Home</a>
     <a href="/posts">Posts</a>
